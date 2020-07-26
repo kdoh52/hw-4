@@ -2,6 +2,8 @@ var start = document.getElementById("start");
 var secLeft = document.getElementById("secLeft");
 var introText = document.getElementById("intro");
 var showPoints = document.getElementById("userScore");
+var correct = document.getElementById("correct");
+var wrong = document.getElementById("wrong");
 
 var question1 = document.getElementById("q1");
 var question2 = document.getElementById("q2");
@@ -46,6 +48,8 @@ question3.style.display = "none";
 question4.style.display = "none";
 question5.style.display = "none";
 finish.style.display = "none";
+correct.style.display = "none";
+wrong.style.display = "none";
 
 // PRESS START
 function pressStart() {
@@ -79,10 +83,26 @@ function renderTime() {
     secLeft.textContent = totalSeconds;
 }
 
-// ADD POINT
+// ADD POINT + CORRECT!
 function plusPoint () {
     points++;
     console.log(points);
+
+    correct.style.display = "block";
+    setTimeout(function(){
+        correct.style.display = "none";
+    }, 1000);
+}
+
+// SUBTRACT TIME + WRONG!
+function noPoint () {
+    totalSeconds -= 10;
+    renderTime();
+
+    wrong.style.display = "block";
+    setTimeout(function() {
+        wrong.style.display = "none";
+    }, 1000);
 }
 
 // QUIZ FLOW
@@ -114,36 +134,56 @@ function toFin () {
 start.addEventListener("click", pressStart);
 
 // ANSWERING Q1
+answer1_1.addEventListener("click", noPoint);
+answer1_2.addEventListener("click", noPoint);
+answer1_3.addEventListener("click", plusPoint);
+answer1_4.addEventListener("click", noPoint);
+
 answer1_1.addEventListener("click", toQ2);
 answer1_2.addEventListener("click", toQ2);
-answer1_3.addEventListener("click", plusPoint);
-    answer1_3.addEventListener("click", toQ2);
+answer1_3.addEventListener("click", toQ2);
 answer1_4.addEventListener("click", toQ2);
 
 // ANSWERING Q2
+answer2_1.addEventListener("click", noPoint);
+answer2_2.addEventListener("click", noPoint);
+answer2_3.addEventListener("click", plusPoint);
+answer2_4.addEventListener("click", noPoint);
+
 answer2_1.addEventListener("click", toQ3);
 answer2_2.addEventListener("click", toQ3);
-answer2_3.addEventListener("click", plusPoint);
-    answer2_3.addEventListener("click", toQ3);
+answer2_3.addEventListener("click", toQ3);
 answer2_4.addEventListener("click", toQ3);
 
 // ANSWERING Q3
+answer3_1.addEventListener("click", noPoint);
+answer3_2.addEventListener("click", noPoint);
+answer3_3.addEventListener("click", noPoint);
+answer3_4.addEventListener("click", plusPoint);
+
 answer3_1.addEventListener("click", toQ4);
 answer3_2.addEventListener("click", toQ4);
 answer3_3.addEventListener("click", toQ4);
-answer3_4.addEventListener("click", plusPoint);
-    answer3_4.addEventListener("click", toQ4);
+answer3_4.addEventListener("click", toQ4);
 
 // ANSWERING Q4
+answer4_1.addEventListener("click", noPoint);
+answer4_2.addEventListener("click", noPoint);
+answer4_3.addEventListener("click", plusPoint);
+answer4_4.addEventListener("click", noPoint);
+
 answer4_1.addEventListener("click", toQ5);
 answer4_2.addEventListener("click", toQ5);
-answer4_3.addEventListener("click", plusPoint);
-    answer4_3.addEventListener("click", toQ5);
+answer4_3.addEventListener("click", toQ5);
 answer4_4.addEventListener("click", toQ5);
 
 // ANSWERING Q5
+answer5_1.addEventListener("click", noPoint);
+answer5_2.addEventListener("click", noPoint);
+answer5_3.addEventListener("click", noPoint);
+answer5_4.addEventListener("click", plusPoint);
+
 answer5_1.addEventListener("click", toFin);
 answer5_2.addEventListener("click", toFin);
 answer5_3.addEventListener("click", toFin);
-answer5_4.addEventListener("click", plusPoint);
-    answer5_4.addEventListener("click", toFin);
+answer5_4.addEventListener("click", toFin);
