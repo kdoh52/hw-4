@@ -61,7 +61,13 @@ function timeFunc() {
         setTimeout(minusSec, 1000);
     }
     else {
-        alert("time's up!");
+        question1.style.display = "none";
+        question2.style.display = "none";
+        question3.style.display = "none";
+        question4.style.display = "none";
+        question5.style.display = "none";
+        finish.style.display = "block";
+        showPoints.textContent = points;
     }
 }
 function minusSec() {
@@ -73,13 +79,13 @@ function renderTime() {
     secLeft.textContent = totalSeconds;
 }
 
-
+// ADD POINT
 function plusPoint () {
     points++;
     console.log(points);
 }
 
-
+// QUIZ FLOW
 function toQ2 () {
     question1.style.display = "none";
     question2.style.display = "block";
@@ -100,6 +106,8 @@ function toFin () {
     question5.style.display = "none";
     finish.style.display = "block";
     showPoints.textContent = points;
+    totalSeconds = 1;
+    secLeft.textContent = "0";
 }
 
 // PRESSING START
