@@ -1,4 +1,6 @@
 var start = document.getElementById("start");
+var playerName = document.getElementById("playerName");
+var submitBtn = document.querySelector("#submit-score");
 var secLeft = document.getElementById("secLeft");
 var introText = document.getElementById("intro");
 var showPoints = document.getElementById("userScore");
@@ -130,6 +132,7 @@ function toFin () {
     secLeft.textContent = "0";
 }
 
+
 // PRESSING START
 start.addEventListener("click", pressStart);
 
@@ -187,3 +190,18 @@ answer5_1.addEventListener("click", toFin);
 answer5_2.addEventListener("click", toFin);
 answer5_3.addEventListener("click", toFin);
 answer5_4.addEventListener("click", toFin);
+
+// HIGH SCORE SUBMIT
+submitBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    
+    var user = {
+        name: playerName.value,
+        score: showPoints.textContent
+    };
+    
+    console.log(user);
+    localStorage.setItem("user", JSON.stringify(user));
+    // highScores.push(user);
+    // addtoHS();
+});
