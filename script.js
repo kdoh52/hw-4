@@ -132,7 +132,6 @@ function toFin () {
     secLeft.textContent = "0";
 }
 
-
 // PRESSING START
 start.addEventListener("click", pressStart);
 
@@ -203,5 +202,4 @@ submitBtn.addEventListener("click", function(event) {
     console.log(user);
     localStorage.setItem("user", JSON.stringify(user));
     // highScores.push(user);
-    // addtoHS();
 });

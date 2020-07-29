@@ -5,10 +5,8 @@ var clearScores = document.getElementById("clear-scores");
 
 var highScores = JSON.parse(localStorage.getItem("user"));
 
-console.log(highScores);
-
+// console.log(highScores);
 winner.textContent = highScores.name + " " + highScores.score;
-
 
 clearScores.addEventListener("click", function() {
     winner.textContent = "";
